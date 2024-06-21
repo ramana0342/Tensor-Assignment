@@ -1,22 +1,22 @@
-// // middlewares/authMiddleware.js
 
-// // Middleware to ensure user is authenticated
+
+
 // const ensureAuthenticated = (req, res, next) => {
-//     // Assuming you have a way to check if the user is authenticated
+
 //     if (req.isAuthenticated()) {
-//       return next(); // User is authenticated, proceed to the next middleware or route handler
+//       return next(); 
 //     } else {
-//       // User is not authenticated, return an error response
+//     
 //       return res.status(401).json({ error: 'Unauthorized' });
 //     }
 //   };
 
-// middleware/authMiddleware.js
+
 
 const passport = require('passport');
 const JwtStrategy = require('passport-jwt').Strategy;
 const ExtractJwt = require('passport-jwt').ExtractJwt;
-const User = require('../models/User'); // Replace with your user model
+const User = require('../models/User'); 
 
 const jwtOptions = {
   jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
@@ -26,7 +26,7 @@ const jwtOptions = {
 passport.use(
   new JwtStrategy(jwtOptions, async (jwtPayload, done) => {
     try {
-      const user = await User.findById(jwtPayload.sub); // Assuming sub is the user ID
+      const user = await User.findById(jwtPayload.sub);
       if (!user) {
         return done(null, false);
       }

@@ -1,4 +1,4 @@
-// passport-setup.js
+
 
 const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
@@ -13,12 +13,12 @@ passport.use(
     },
     async (accessToken, refreshToken, profile, done) => {
       try {
-        // Check if user already exists in database
+        
        // console.log(profile)
         let user = await User.findOne({ googleId: profile.id });
         
         if (!user) {
-          // Create new user if not exists
+        
           //console.log(profile)
           user = new User({
             googleId: profile.id,

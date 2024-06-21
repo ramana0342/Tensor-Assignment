@@ -1,4 +1,4 @@
-// components/CustomerServiceForm.js
+
 
 import React, { useState } from 'react';
 import axios from 'axios';
@@ -18,7 +18,7 @@ const CustomerServiceForm = () => {
    try {
       const response = await axios.post('http://localhost:5000/api/submit',queryForm);
       console.log(response.data.message);
-      // Optionally, reset form fields or show success message
+    
     } catch (error) {
       console.error('Error submitting request:', error);
     }
